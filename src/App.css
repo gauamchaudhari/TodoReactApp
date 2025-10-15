@@ -10,7 +10,6 @@
 }
 
 .task_column {
-  width: 33.33%;
-  background-color: green;
+  width: 33.33%; 
   margin: 20px;
 }
