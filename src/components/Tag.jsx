@@ -1,19 +1,24 @@
 import React from "react";
-import "./Tag.css";
+
+const tagClasses = {
+  HTML: "bg-orange-400 text-white",
+  CSS: "bg-cyan-400 text-white",
+  JAVASCRIPT: "bg-yellow-300 text-gray-800",
+  REACT: "bg-cyan-300 text-gray-900",
+  default: "bg-gray-100 text-gray-800",
+};
 
 const Tag = ({ tagName, selectTag, selected }) => {
-  const tagStyle = {
-    HTML: { backgroundColor: "#fda821", color: "white" },
-    CSS: { backgroundColor: "#15d4c8", color: "white" },
-    JAVASCRIPT: { backgroundColor: "#ffd12c", color: "#323330" },
-    REACT: { backgroundColor: "#4cdafc", color: "#20232a" },
-    default: { backgroundColor: "#f9f9f9", color: "#323330" },
-  };
+  const baseClasses =
+    "text-sm font-medium border border-gray-200 rounded px-3 py-1 mr-2 cursor-pointer transition";
+  const selectedClasses = selected
+    ? tagClasses[tagName] || tagClasses.default
+    : tagClasses.default;
+
   return (
     <button
       type="button"
-      className="tag"
-      style={selected ? tagStyle[tagName] : tagStyle.default}
+      className={`${baseClasses} ${selectedClasses} ${selected ? "shadow-md scale-105" : ""}`}
       onClick={() => selectTag(tagName)}
     >
       {tagName}
